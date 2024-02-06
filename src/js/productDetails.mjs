@@ -1,20 +1,30 @@
 import { findProductById } from "./productData.mjs";
-import { setLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { cartCount } from "./stores.mjs";
 
 let product = {}
+
 
 // productDetails is just bringing over the html structure and elements so that when we add the productDetailsTemplate it adds all the content. 
 export default async function productDetails(productId, selector) {
     // let product = await makeRequest(baseUrl + 'productID')
-    let product = await findProductById(productId);
+    product = await findProductById(productId);
     const el = document.querySelector(selector);
     el.insertAdjacentHTML('afterbegin', productDetailsTemplate(product));
-    document.getElementById("addToCart").addEventListener("click", addToCart());
+    document.getElementById("addToCart").addEventListener("click", addToCart);
 }
 
-
-export function addToCart(product) {
-    setLocalStorage("so-cart", product);
+function addToCart() {
+  let cartContents = getLocalStorage("so-cart");
+  //check to see if there was anything there
+  if (!cartContents) {
+    cartContents = [];
+  }
+  // then add the current product to the list
+  cartContents.push(product);
+  setLocalStorage("so-cart", cartContents);
+  // update the visible cartCount
+  cartCount.set(cartContents.length);
 }
 
 export function productDetailsTemplate(product){

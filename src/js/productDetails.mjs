@@ -1,11 +1,12 @@
 import { findProductById } from "./productData.mjs";
+import { setLocalStorage } from "./utils.mjs";
 
 let product = {}
 
 // productDetails is just bringing over the html structure and elements so that when we add the productDetailsTemplate it adds all the content. 
 export default async function productDetails(productId, selector) {
     // let product = await makeRequest(baseUrl + 'productID')
-    let product = findProductById(productId);
+    let product = await findProductById(productId);
     const el = document.querySelector(selector);
     el.insertAdjacentHTML('afterbegin', productDetailsTemplate(product));
     document.getElementById("addToCart").addEventListener("click", addToCart());
@@ -17,7 +18,7 @@ export function addToCart(product) {
 }
 
 export function productDetailsTemplate(product){
-   return`         <h3>${product.Brand.Name}</h3>
+   return `<h3>${product.Brand.Name}</h3>
 
    <h2 class="divider">${product.NameWithoutBrand}</h2>
 

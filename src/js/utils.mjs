@@ -11,13 +11,29 @@ export function getLocalStorage(key) {
 }
 // save data to local storage
 export function setLocalStorage(key, data) {
-  localStorage.setItem(key, JSON.stringify(data));
+  const existingDataString = localStorage.getItem(key);
+  const existingData = existingDataString ? JSON.parse(existingDataString) : [];
+  if (!Array.isArray(existingData)) {
+    console.error(`Data stored in local storage with key '${key}' is not an array.`);
+    return;
+  }
+
+  existingData.push(data);
+  localStorage.setItem(key, JSON.stringify(existingData));
 }
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
-  qs(selector).addEventListener("touchend", (event) => {
+  qs(selector).addEventListener('touchend', (event) => {
     event.preventDefault();
     callback();
   });
-  qs(selector).addEventListener("click", callback);
+  qs(selector).addEventListener('click', callback);
 }
+
+export function getParam(param) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const product = urlParams.get('product')
+  return urlParams.get(param)
+}
+

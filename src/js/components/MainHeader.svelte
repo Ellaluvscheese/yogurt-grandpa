@@ -1,5 +1,7 @@
 <script>
   import { cartCount } from "../stores.mjs";
+  import { alert } from "../alerts.js";
+  alert()
 </script>
 
     <div class="logo">
@@ -35,3 +37,4 @@
         <sup class="cart-count">{ $cartCount }</sup>
       </a>
     </div>
+    

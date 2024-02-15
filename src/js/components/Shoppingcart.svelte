@@ -1,6 +1,21 @@
 <script>
     import {getLocalStorage} from "../utils.mjs";
     const cartItems = getLocalStorage("so-cart");
+
+    //Cart total
+    function calculateTotal() {
+        let totalPrice = 0;
+        cartItems.forEach(item => {
+            totalPrice += item.FinalPrice;
+        });
+        if (totalPrice == 0) {
+            //document.getElementById("cart-footer").style.display = "none";
+            return totalPrice;
+        }
+        else {
+        return totalPrice;
+        }
+    }
 </script>
 
 <h2>My Cart</h2>
@@ -21,3 +36,6 @@
     </li>
     {/each}
 </ul>
+
+<div id="cart-footer"><p>Total Price: $<span id="totalPrice">{calculateTotal()}</span></p>
+    </div>

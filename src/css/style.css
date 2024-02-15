@@ -30,6 +30,17 @@ header {
   justify-content: space-between;
   padding: 0 10px;
 }
+.alertlist {
+  --background: red;
+  --color: white;
+}
+.alertlist > p {
+  background-color: var(--background);
+  color: var(--color);
+  height: auto;
+  padding: .5em;
+  margin: 0;
+}
 .logo {
   line-height: 60px;
   width: 245px;

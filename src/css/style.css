@@ -235,3 +235,18 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+
+/* Product icons */
+.product-grid {
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+.product-grid li {
+  display: block;
+  justify-content: center;
+}
+.product {
+  width: 30%;
+}

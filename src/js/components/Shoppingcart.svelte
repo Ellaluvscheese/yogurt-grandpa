@@ -15,6 +15,7 @@
         else {
         return totalPrice;
         }
+        
     }
 </script>
 

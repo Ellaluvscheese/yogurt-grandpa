@@ -20,3 +20,14 @@ export async function findProductById(id) {
   return product.Result;
 }
 
+export async function checkout(order) {
+  const response = await fetch(baseURL + 'checkout', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(order),
+  });
+  const data = await convertToJson(response);
+  return data.Result;
+}

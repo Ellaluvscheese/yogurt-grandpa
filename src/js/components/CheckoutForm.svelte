@@ -1,6 +1,6 @@
 <script>
-  import { getLocalStorage } from "../utils.mjs";
-
+  import { getLocalStorage, formDataToJSON } from "../utils.mjs";
+    import { checkout } from "../externalServices.mjs";
   export let key = "";
   let list = [];
   let itemTotal = 0;
@@ -23,6 +23,27 @@
     tax = itemTotal * 0.06.toFixed(2);
     orderTotal = parseFloat(itemTotal) + parseFloat(shipping) + parseFloat(tax).toFixed(2);
   };
+  // takes the items currently stored in the cart (localstorage) and returns them in a simplified form.
+const packageItems = function (items) {
+// convert the list of products from localStorage to the simpler form required for the checkout process. Array.map would be perfect for this.
+  const packagedItems = items.map((item) => {
+    console.log(item);
+    return {
+      id: item.Id,
+      price: item.FinalPrice,
+      name: item.Name,
+      quantity: item.quantity,
+    };
+    return packagedItems;
+  });
+}
+
+const handleSubmit = function (e) {
+  // build the data object from the calculated fields, the items in the cart, and the information entered into the form
+  // remember that the form that was submitted can be found two ways...this or e.target 
+  // call the checkout method in our externalServices module and send it our data object.
+}
+
   
 </script>
 
@@ -49,7 +70,6 @@
     type="text"
     id="zip"
     name="zip"
-    pattern="[0-9]{5}"
     title="Enter a valid ZIP Code"
     required
   />
@@ -62,7 +82,7 @@
     type="tel"
     name="ccardNumber"
     inputmode="numeric"
-    pattern="[0-9\s]{(13, 19)}"
+    
     autocomplete="cc-number"
     maxlength="19"
   />
@@ -136,4 +156,6 @@
   shipping: 12,
   tax: "16.20"
 }
+
+pattern="[0-9\s]{(13, 19)}"
 -->

@@ -21,13 +21,12 @@ export async function findProductById(id) {
 }
 
 export async function checkout(order) {
-  const response = await fetch(baseURL + 'checkout', {
+  const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(order),
-  });
-  const data = await convertToJson(response);
-  return data.Result;
+  };
+  return await fetch(baseURL + 'checkout/', options).then(convertToJson);
 }

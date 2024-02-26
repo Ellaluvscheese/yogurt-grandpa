@@ -15,6 +15,7 @@
         else {
         return totalPrice;
         }
+        
     }
 </script>
 
@@ -41,4 +42,7 @@
         {/each}
     </ul>
     <div id="cart-footer"><p>Total Price: $<span id="totalPrice">{calculateTotal()}</span></p></div>
+    <a href="/checkout/index.html">
+        <button>Checkout</button>
+    </a>
 {/if}

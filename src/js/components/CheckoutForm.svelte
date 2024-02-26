@@ -46,6 +46,7 @@
 
 
   const handleSubmit = async function (e) {
+    e.preventDefault();
     const json = formDataToJSON(this);
     // add totals, and item details
     json.orderDate = new Date();
@@ -55,7 +56,7 @@
     json.city = e.target.city.value;
     json.state = e.target.state.value;
     json.zip = e.target.zip.value;
-    json.cardNumber = e.target.ccardNumber.value;
+    json.cardNumber = e.target.cardNumber.value;
     json.expiration = e.target.expiration.value;
     json.code = e.target.code.value;
     json.items = packageItems(list);
@@ -106,7 +107,7 @@
       maxlength="19"
     />
     <label for="expiration">Expiration:</label>
-    <input type="date" name="expiration" required />
+    <input type="text" name="expiration" required />
     
     <label for="code">Security Code:</label>
     <input type="tel" name="code" inputmode="numeric" maxlength="3" required />

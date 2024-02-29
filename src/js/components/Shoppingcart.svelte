@@ -14,8 +14,16 @@
         }
         else {
         return totalPrice;
-        }
-        
+        }   
+    }
+
+    //Remove item from cart
+    function removeItem() {
+        let id = document.getElementsByTagName("span")[0].id;
+        let index = cartItems.findIndex(item => item.Id == id);
+        cartItems.splice(index, 1);
+        localStorage.setItem("so-cart", JSON.stringify(cartItems));
+        location.reload();
     }
 </script>
 
@@ -28,6 +36,9 @@
     <ul class="product-list">
         {#each cartItems as item}
         <li class="cart-cart divider">
+            <div class="remove-button-flex">
+                <button class="remove-item-button" on:click={removeItem}><span id="{item.Id}">X</span></button>
+            </div>
             <a href="/product_pages/index.html?productid={item.Id}"
             class="cart-card__image">
             <img src={item.Image} alt={item.Name}>

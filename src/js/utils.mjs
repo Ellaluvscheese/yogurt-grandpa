@@ -10,17 +10,10 @@ export function qs(selector, parent = document) {
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
-  return JSON.parse(localStorage.getItem(key)) || [];
+  return JSON.parse(localStorage.getItem(key));
 }
 // save data to local storage
 export function setLocalStorage(key, data) {
-  const existingDataString = localStorage.getItem(key);
-  const existingData = existingDataString ? JSON.parse(existingDataString) : [];
-  if (!Array.isArray(existingData)) {
-    console.error(`Data stored in local storage with key '${key}' is not an array.`);
-    return;
-  }
-
   localStorage.setItem(key, JSON.stringify(data));
 }
 // set a listener for both touchend and click
@@ -50,5 +43,17 @@ export function renderHeaderFooter() {
 }
 
 export function getCartCount() {
-  return getLocalStorage("so-cart").length;
+  return getLocalStorage("so-cart").length ?? 0;
+}
+
+// takes a form element and returns an object where the key is the "name" of the form input.
+export function formDataToJSON(formElement) {
+  const formData = new FormData(formElement),
+    convertedJSON = {};
+
+  formData.forEach(function (value, key) {
+    convertedJSON[key] = value;
+  });
+
+  return convertedJSON;
 }

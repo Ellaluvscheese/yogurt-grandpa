@@ -1,4 +1,4 @@
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./externalServices.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 import { cartCount } from "./stores.mjs";
 
@@ -34,7 +34,7 @@ export function productDetailsTemplate(product){
 
    <img
      class="divider"
-     src="${product.Image}"
+     src="${product.Images.PrimaryLarge}"
      alt="${product.Name}
    />
 

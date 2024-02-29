@@ -8,5 +8,6 @@
       <h3 class="card__brand">{product.Brand.Name}</h3>
       <h2 class="card__name">{product.NameWithoutBrand}</h2>
       <p class="product-card__price">${product.FinalPrice}</p>
+      <p class="discount">EXTRA 25% OFF AT CHECK OUT</p>
     </a>
 </section>

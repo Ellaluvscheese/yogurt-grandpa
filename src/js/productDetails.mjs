@@ -1,27 +1,26 @@
 import { findProductById } from "./externalServices.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 import { cartCount } from "./stores.mjs";
+import runAnimateCart from "./addToCart.js";
 
-let product = {}
-let error = {}
+let product = {};
+let error = {};
 
-// productDetails is just bringing over the html structure and elements so that when we add the productDetailsTemplate it adds all the content. 
+// productDetails is just bringing over the html structure and elements so that when we add the productDetailsTemplate it adds all the content.
 export default async function productDetails(productId, selector) {
-    // let product = await makeRequest(baseUrl + 'productID')
-    try {
+  // let product = await makeRequest(baseUrl + 'productID')
+  try {
     product = await findProductById(productId);
-    if (!product) throw new Error("Product not Found")
-    
-    
+    if (!product) throw new Error("Product not Found");
+
     const el = document.querySelector(selector);
-    el.insertAdjacentHTML('afterbegin', productDetailsTemplate(product));
+    el.insertAdjacentHTML("afterbegin", productDetailsTemplate(product));
     document.getElementById("addToCart").addEventListener("click", addToCart);
-}
-catch (error) {
-  console.log(error)
-  const el = document.querySelector(selector);
-    el.insertAdjacentHTML('afterbegin', productErrorTemplate(error));
-}
+  } catch (error) {
+    console.log(error);
+    const el = document.querySelector(selector);
+    el.insertAdjacentHTML("afterbegin", productErrorTemplate(error));
+  }
 }
 
 function addToCart() {
@@ -32,9 +31,10 @@ function addToCart() {
   setLocalStorage("so-cart", cartContents);
   // update the visible cartCount
   cartCount.set(cartContents.length);
+  runAnimateCart();
 }
 
-export function productDetailsTemplate(product){
+export function productDetailsTemplate(product) {
   return `<h3>${product.Brand.Name}</h3>
 
   <h2 class="divider">${product.NameWithoutBrand}</h2>
@@ -55,9 +55,10 @@ export function productDetailsTemplate(product){
   <div class="product-detail__add">
     <button id="addToCart" data-id='${product.Id}'>Add to Cart</button>
   </div> 
-  `}
+  `;
+}
 
-export function productErrorTemplate(error){
-  return `<h3>Sorry! This product cannot be found. Return home and try again.</h3>`
-// insert the product specifics into a string of markup.
+export function productErrorTemplate(error) {
+  return `<h3>Sorry! This product cannot be found. Return home and try again.</h3>`;
+  // insert the product specifics into a string of markup.
 }

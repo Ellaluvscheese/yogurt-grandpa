@@ -31,3 +31,21 @@ export async function checkout(order) {
   };
   return await fetch(baseURL + 'checkout/', options).then(convertToJson);
 }
+
+export async function getLogin(username, password){
+  
+  const creds = {
+    username: username,
+    password: password
+  }
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(creds),
+  };
+
+  return await fetch(baseURL + 'login/', options).then(convertToJson);
+}

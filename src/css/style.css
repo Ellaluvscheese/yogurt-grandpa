@@ -330,3 +330,17 @@ footer {
   margin-top: 10px;
   color: var(--tertiary-color);
 }
+.newsletter-button {
+  text-decoration: none;
+  color: black;
+  background-color: var(--light-grey);
+  padding: 10px;
+  border-radius: 20px;
+  font-size: small;
+  margin-left: 600px;
+}
+.button-background {
+  align-items: center;
+  margin-top: 20px;
+
+}

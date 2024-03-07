@@ -8,8 +8,8 @@
       <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
       <a href="/index.html"> Sleep<span class="highlight">Outside</span></a>
     </div>
-    <div class="newsletter-button">
-      <a href="/product_pages/newsletter-sign-up.html">Join Newsletter!</a>
+    <div class="button-background">
+      <a class="newsletter-button" href="/product_pages/newsletter-sign-up.html">Join Newsletter!</a>
     </div>
     <div class="cart">
       <a href="/cart/index.html" style="text-decoration: none;">

@@ -32,7 +32,13 @@ function addToCart() {
   // update the visible cartCount
   cartCount.set(cartContents.length);
   runAnimateCart();
+  document.getElementById("addToCart").addEventListener("click", function() {
+    // Display the alert message
+    alert("Item added to cart!");
+  });
+
 }
+
 
 export function productDetailsTemplate(product) {
   return `<h3>${product.Brand.Name}</h3>
@@ -57,6 +63,8 @@ export function productDetailsTemplate(product) {
   <div class="product-detail__add">
     <button id="addToCart" data-id='${product.Id}'>Add to Cart</button>
   </div> 
+
+
   `;
 }
 

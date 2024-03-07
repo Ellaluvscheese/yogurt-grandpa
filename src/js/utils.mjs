@@ -44,7 +44,17 @@ export function renderHeaderFooter() {
 }
 
 export function getCartCount() {
-  return getLocalStorage('so-cart').length ?? 0;
+  const cartContents = getLocalStorage('so-cart');
+
+  if (!cartContents || !Array.isArray(cartContents)) {
+    // Handle the case where 'so-cart' is not available or not an array
+    return 0;
+  }
+
+  // Sum up the quantities of each item in the cart
+  const totalQuantity = cartContents.reduce((total, item) => total + (item.quantity || 0), 0);
+
+  return totalQuantity;
 }
 
 // takes a form element and returns an object where the key is the 'name' of the form input.

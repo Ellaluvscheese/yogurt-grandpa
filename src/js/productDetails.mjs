@@ -26,8 +26,25 @@ export default async function productDetails(productId, selector) {
 function addToCart() {
   let cartContents = getLocalStorage("so-cart");
   //check to see if there was anything there
-  // then add the current product to the list
-  cartContents.push(product);
+
+  // add a quantity property to the product
+  product.quantity = 1;
+
+  // Check if item is already in cart
+  let productFound = false;
+  for (let ind = 0; ind < cartContents.length; ind++) {
+    if (cartContents[ind].Id === product.Id) {
+      cartContents[ind].quantity += 1;
+      productFound = true;
+      break; // Exit the loop since the product is found
+    }
+  }
+
+  // If the product is not found, add it to the cart
+  if (!productFound) {
+    cartContents.push(product);
+  }
+
   setLocalStorage("so-cart", cartContents);
   // update the visible cartCount
   cartCount.set(cartContents.length);

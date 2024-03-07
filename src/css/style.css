@@ -329,3 +329,40 @@ footer {
   width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+/* Newsletter Signup Page */
+.signup-h2 {
+  font-family: var(--font-headline);
+}
+.signup-main {
+  display: flex;
+  flex-direction: column;
+}
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+.signup-label {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.signup-input {
+  height: 40px;
+}
+.signup-button {
+  margin-top: 10px;
+  color: var(--tertiary-color);
+}
+.newsletter-button {
+  text-decoration: none;
+  color: black;
+  background-color: var(--light-grey);
+  padding: 10px;
+  border-radius: 20px;
+  font-size: small;
+  margin-left: 600px;
+}
+.button-background {
+  align-items: center;
+  margin-top: 20px;
+
+}

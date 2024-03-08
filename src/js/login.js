@@ -5,5 +5,16 @@
 //  Pass those to the login function along with the redirect information we gathered above.
 
 import { renderHeaderFooter } from "./utils.mjs";
+import { getParam } from "./utils.mjs";
+import { login } from "./auth.mjs";
 
-renderHeaderFooter();
+const redirect = getParam("redirect");
+
+
+document.querySelector("#loginButton").addEventListener("click", (e) => {
+    const username = document.querySelector("#username").value;
+    const password = document.querySelector("#password").value;
+    login({ username, password }, redirect);
+  });
+
+  renderHeaderFooter();

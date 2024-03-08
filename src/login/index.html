@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Home</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="js/main.js" type="module"></script>
-    <script src="js/alerts.js" defer></script>
+    <script src="../js/login.js" type="module"></script>
   </head>
   <body>
     <header id="main-header" class="divider"></header>
     <!-- <div id="alertContainer"></div> -->
     <main class="divider">
-        <form>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-            <button onclick="" type="submit">Login</button>
-        </form>
+      <h1>Login</h1>
+      <form>
+          <input id="username" name="username" type="text" value="user1@email.com" placeholder="username" />
+          <input id="password" name="password" type="password" placeholder="password" />
+          <button id="loginButton" type="submit">Login</button>
+      </form>
+      <a href="/register">Register</a>
 
     </main>
     <footer id="main-footer">&copy;NOT a real business</footer>
